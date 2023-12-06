@@ -1,13 +1,10 @@
-import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 import LogoImage from '@logos/logo.svg';
 import { AspectRatio } from './ui/aspect-ratio';
 
-type Props = {};
-
-function Logo({}: Props) {
+function Logo() {
   return (
     <Link href={'/'} prefetch={false} className="overflow-hidden">
       <div className="flex items-center w-72 h-14">
