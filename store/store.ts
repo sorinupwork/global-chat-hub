@@ -4,32 +4,27 @@ import { Subscription } from '@/types/Subscription';
 
 export type LanguagesSupported =
   | 'en'
-  | 'fr'
   | 'es'
-  | 'nl'
   | 'ro'
-  | 'zh'
-  | 'hi'
-  | 'ar'
+  | 'nl'
   | 'fr'
-  | 'bn'
-  | 'ru'
   | 'pt'
-  | 'id';
+  | 'ru'
+  | 'ar'
+  | 'de'
+  | 'it';
 
 export const LanguagesSupportedMap: Record<LanguagesSupported, string> = {
   en: 'English',
-  ar: 'Arabic',
-  bn: 'Bengali',
   es: 'Spanish',
-  fr: 'France',
-  hi: 'Hindi',
-  id: 'Indonesian',
-  nl: 'Dutch',
-  pt: 'Portuguese',
   ro: 'Romanian',
+  nl: 'Dutch',
+  fr: 'France',
+  pt: 'Portuguese',
   ru: 'Russian',
-  zh: 'Chinese',
+  ar: 'Arabic',
+  de: 'German',
+  it: 'Italian',
 };
 
 const LANGUAGES_IN_FREE = 3;
