@@ -34,7 +34,7 @@ async function ChatPage({ params: { chatId } }: Props) {
       <AdminControls chatId={chatId} />
       <ChatMembersBadge chatId={chatId} />
 
-      <div className="flex-1 ">
+      <div className="flex-1">
         <ChatMessages
           chatId={chatId}
           session={session}

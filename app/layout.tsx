@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Head from 'next/head';
 import { Inter } from 'next/font/google';
 
 import './globals.css';
@@ -36,12 +37,12 @@ export default function RootLayout({
     <ClientProviders>
       <html lang="en">
         <body className={inter.className}>
-          <head>
+          <Head>
             <meta
               property="og:image"
               content={'https://i.ibb.co/wzJLQmx/global-chat-hub.png' || ''}
             />
-          </head>
+          </Head>
           <FirebaseAuthProvider>
             <SubscriptionProvider>
               <ThemeProvider
