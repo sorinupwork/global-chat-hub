@@ -6,7 +6,7 @@ import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { addDoc, getDocs, serverTimestamp } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
-import { ToastAction } from '@radix-ui/react-toast';
+import { ToastAction } from './ui/toast';
 
 import {
   Form,
@@ -76,6 +76,8 @@ function ChatInput({ chatId }: { chatId: string }) {
           </ToastAction>
         ),
       });
+
+      return;
     }
 
     const userToStore: User = {

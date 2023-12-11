@@ -5,7 +5,7 @@ import { Session } from 'next-auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import { Message, sortedMessagesRef } from '@/lib/converters/Message';
-import { useLanguageStore } from '@/store/store';
+import { useLanguageStore, useSubscriptionStore } from '@/store/store';
 import { MessageCircleIcon } from 'lucide-react';
 import LoadingSpinner from './LoadingSpinner';
 import UserAvatar from './UserAvatar';
@@ -21,6 +21,7 @@ function ChatMessages({
 }) {
   const language = useLanguageStore((state) => state.language);
   const messagesEndRef = createRef<HTMLDivElement>();
+  const subscription = useSubscriptionStore((state) => state.subscription);
 
   const [messages, loading, error] = useCollectionData<Message>(
     sortedMessagesRef(chatId),
@@ -33,8 +34,15 @@ function ChatMessages({
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, messagesEndRef]);
 
+  const isPro =
+    subscription?.role === 'pro' && subscription.status === 'active';
+
   return (
-    <div className="p-5">
+    <div
+      className={`p-5 min-h-[${isPro ? '480px' : '430px'}] sm:min-h-[${
+        isPro ? '600px' : '550px'
+      }]`}
+    >
       {!loading && messages?.length === 0 && (
         <div className="flex flex-col justify-center text-center items-center p-20 rounded-xl space-y-2 bg-indigo-400 text-white font-extralight">
           <MessageCircleIcon className="h-10 w-10" />

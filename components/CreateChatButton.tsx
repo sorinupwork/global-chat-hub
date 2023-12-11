@@ -5,13 +5,17 @@ import { MessageSquarePlusIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { v4 as uuid } from 'uuid';
-import { serverTimestamp, setDoc } from 'firebase/firestore';
+import { getDocs, serverTimestamp, setDoc } from 'firebase/firestore';
 
 import { Button } from './ui/button';
 import { useSubscriptionStore } from '@/store/store';
 import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from './LoadingSpinner';
-import { addChatRef } from '@/lib/converters/ChatMembers';
+import {
+  addChatRef,
+  chatMembersCollectionGroupRef,
+} from '@/lib/converters/ChatMembers';
+import { ToastAction } from './ui/toast';
 
 function CreateChatButton({ isLarge }: { isLarge?: boolean }) {
   const { data: session } = useSession();
@@ -29,6 +33,34 @@ function CreateChatButton({ isLarge }: { isLarge?: boolean }) {
       description: 'Hold tight while we create your new chat...',
       duration: 3000,
     });
+
+    const noOfChats = (
+      await getDocs(chatMembersCollectionGroupRef(session.user.id))
+    ).docs.map((doc) => doc.data()).length;
+
+    const isPro =
+      subscription?.role === 'pro' && subscription.status === 'active';
+
+    if (!isPro && noOfChats >= 3) {
+      toast({
+        title: 'Free plan limit exceeded',
+        description:
+          'You have excedeed the limit of chats for the FREE plan. Please upgrade to PRO to continue adding users to chats!',
+        variant: 'destructive',
+        action: (
+          <ToastAction
+            altText="Upgrade"
+            onClick={() => router.push('/register')}
+          >
+            Upgrade to PRO
+          </ToastAction>
+        ),
+      });
+
+      setLoading(false);
+
+      return;
+    }
 
     const chatId = uuid();
 

@@ -5,7 +5,7 @@ import DemoGif from '@/images/landingPage/DemoGif.gif';
 
 export default async function Home() {
   return (
-    <main className="">
+    <main>
       <div className="relative isolate pt-14 dark:bg-gray-900">
         <div
           className="absolute inset-x-0 top-28 -z-10 transform-gpu overflow-hidden blur-3xl"
