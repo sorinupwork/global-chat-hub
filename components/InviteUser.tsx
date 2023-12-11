@@ -136,13 +136,13 @@ function InviteUser({ chatId }: { chatId: string }) {
           <DialogTrigger asChild>
             <Button>
               <PlusCircleIcon className="mr-1" />
-              Add User
+              Add
             </Button>
           </DialogTrigger>
 
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle>Add User</DialogTitle>
+              <DialogTitle>Add</DialogTitle>
               <DialogDescription>
                 Simply enter another users email address to invite them to this
                 chat!{' '}
