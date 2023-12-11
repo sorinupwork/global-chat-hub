@@ -142,7 +142,7 @@ function InviteUser({ chatId }: { chatId: string }) {
 
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle>Add</DialogTitle>
+              <DialogTitle>Add User to Chat</DialogTitle>
               <DialogDescription>
                 Simply enter another users email address to invite them to this
                 chat!{' '}
