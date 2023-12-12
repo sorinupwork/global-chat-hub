@@ -20,16 +20,14 @@ function SubscriptionProvider({ children }: { children: React.ReactNode }) {
       subscriptionRef(session?.user?.id),
       (snapshot) => {
         if (snapshot.empty) {
-          console.log('User has NO subscription');
           setSubscription(null);
           return;
         } else {
-          console.log('USer has subscription!');
           setSubscription(snapshot.docs[0].data());
         }
       },
       (error) => {
-        console.log('Error getting document:', error);
+        console.error('Error getting document:', error);
       }
     );
   }, [session, setSubscription]);

@@ -29,8 +29,6 @@ function DeleteChatButton({ chatId }: { chatId: string }) {
       description: 'Please wait while we delete the chat...',
     });
 
-    console.log('Deleting :: ', chatId);
-
     await fetch('/api/chat/delete', {
       method: 'DELETE',
       headers: {

@@ -39,7 +39,5 @@ export async function generatePortalLink() {
     return_url: returnUrl,
   });
 
-  console.log(stripeSession.url);
-
   redirect(stripeSession.url);
 }

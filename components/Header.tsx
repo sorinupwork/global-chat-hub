@@ -23,7 +23,7 @@ async function Header() {
 
           {session ? (
             <>
-              <Link href={'/chat'} prefetch={false}>
+              <Link href={'/chat'} prefetch={false} aria-label="show all chats">
                 <MessagesSquareIcon className="text-black dark:text-white" />
               </Link>
               <CreateChatButton />

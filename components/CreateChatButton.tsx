@@ -105,7 +105,7 @@ function CreateChatButton({ isLarge }: { isLarge?: boolean }) {
     );
 
   return (
-    <Button variant={'ghost'} onClick={createNewChat}>
+    <Button variant={'ghost'} onClick={createNewChat} aria-label="create chat">
       <MessageSquarePlusIcon />
     </Button>
   );

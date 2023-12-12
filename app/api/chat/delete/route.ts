@@ -14,7 +14,6 @@ export async function DELETE(req: Request) {
     if (error.failedAttempts < MAX_RETRY_ATTEMPTS) {
       return true;
     } else {
-      console.log('Failed write at document: ', error.documentRef.path);
       return false;
     }
   });
