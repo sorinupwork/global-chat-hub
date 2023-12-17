@@ -1,10 +1,6 @@
 import { FirestoreAdapter } from '@auth/firebase-adapter';
 import { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import FacebookProvider from 'next-auth/providers/facebook';
-import TwitterProvider from 'next-auth/providers/twitter';
-import LinkedInProvider from 'next-auth/providers/linkedin';
-import InstagramProvider from 'next-auth/providers/instagram';
 
 import { adminAuth, adminDb } from './firebase-admin';
 
@@ -13,15 +9,6 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
-    TwitterProvider({
-      clientId: process.env.TWITTER_ID!,
-      clientSecret: process.env.TWITTER_SECRET!,
-      version: '2.0',
-    }),
-    LinkedInProvider({
-      clientId: process.env.LINKEDIN_CLIENT_ID!,
-      clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
     }),
   ],
   callbacks: {
