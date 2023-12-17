@@ -13,7 +13,7 @@ const tiers = [
       '20 Message Chat Limit in Chats',
       '2 participant limit in Chat',
       '3 Chat Rooms limit',
-      'Supports 2 languages',
+      'Supports 3 languages',
       '48-hour support response time',
     ],
   },
